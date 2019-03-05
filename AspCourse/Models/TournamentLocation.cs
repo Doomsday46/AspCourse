@@ -7,6 +7,7 @@ namespace AspCourse.Models
 {
     public class TournamentLocation
     {
+        public long Id { get; set; }
         public long LocationId { get; set; }
         public virtual Location Location { get; set; }
         public long TournamentId { get; set; }

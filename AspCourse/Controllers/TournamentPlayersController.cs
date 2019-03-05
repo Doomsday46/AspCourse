@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspCourse.Models;
+using AspCourse.ViewModels;
 
 namespace AspCourse.Controllers
 {
@@ -48,8 +49,8 @@ namespace AspCourse.Controllers
         // GET: TournamentPlayers/Create
         public IActionResult Create()
         {
-            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "Id");
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Id");
+            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "FirstName");
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Name");
             return View();
         }
 
@@ -62,12 +63,18 @@ namespace AspCourse.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tournamentPlayer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(tournamentPlayer);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch {
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "Id", tournamentPlayer.PlayerId);
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Id", tournamentPlayer.TournamentId);
+            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "FirstName", tournamentPlayer.PlayerId);
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Name", tournamentPlayer.TournamentId);
             return View(tournamentPlayer);
         }
 
@@ -84,8 +91,8 @@ namespace AspCourse.Controllers
             {
                 return NotFound();
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "Id", tournamentPlayer.PlayerId);
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Id", tournamentPlayer.TournamentId);
+            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "FirstName", tournamentPlayer.PlayerId);
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Name", tournamentPlayer.TournamentId);
             return View(tournamentPlayer);
         }
 
@@ -121,8 +128,8 @@ namespace AspCourse.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "Id", tournamentPlayer.PlayerId);
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Id", tournamentPlayer.TournamentId);
+            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "FirstName", tournamentPlayer.PlayerId);
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Name", tournamentPlayer.TournamentId);
             return View(tournamentPlayer);
         }
 

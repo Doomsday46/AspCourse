@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspCourse.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190305112510_Initial-create")]
+    [Migration("20190305132441_Initial-create")]
     partial class Initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,6 +78,8 @@ namespace AspCourse.Migrations
 
                     b.Property<long>("TournamentId");
 
+                    b.Property<long>("Id");
+
                     b.HasKey("LocationId", "TournamentId");
 
                     b.HasIndex("TournamentId");
@@ -90,6 +92,8 @@ namespace AspCourse.Migrations
                     b.Property<long>("PlayerId");
 
                     b.Property<long>("TournamentId");
+
+                    b.Property<long>("Id");
 
                     b.HasKey("PlayerId", "TournamentId");
 

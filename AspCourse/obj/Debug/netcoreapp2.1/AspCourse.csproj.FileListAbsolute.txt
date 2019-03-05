@@ -91,3 +91,8 @@ C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentPlay
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentPlayers\Details.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentPlayers\Edit.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentPlayers\Index.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentLocations\Create.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentLocations\Delete.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentLocations\Details.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentLocations\Edit.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\TournamentLocations\Index.g.cshtml.cs

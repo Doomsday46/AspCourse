@@ -76,6 +76,7 @@ namespace AspCourse.Migrations
                 name: "TournamentLocation",
                 columns: table => new
                 {
+                    Id = table.Column<long>(nullable: false),
                     LocationId = table.Column<long>(nullable: false),
                     TournamentId = table.Column<long>(nullable: false)
                 },
@@ -100,6 +101,7 @@ namespace AspCourse.Migrations
                 name: "TournamentPlayer",
                 columns: table => new
                 {
+                    Id = table.Column<long>(nullable: false),
                     PlayerId = table.Column<long>(nullable: false),
                     TournamentId = table.Column<long>(nullable: false)
                 },

@@ -23,9 +23,9 @@ namespace AspCourse.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TournamentPlayer>()
-                .HasKey(ww => new { ww.PlayerId, ww.TournamentId });
+                .HasKey(ww => new { ww.Id, ww.PlayerId, ww.TournamentId });
             modelBuilder.Entity<TournamentLocation>()
-                .HasKey(ww => new { ww.LocationId, ww.TournamentId });
+                .HasKey(ww => new { ww.Id, ww.LocationId, ww.TournamentId });
         }
 
         public DbSet<AspCourse.Models.TournamentPlayer> TournamentPlayer { get; set; }

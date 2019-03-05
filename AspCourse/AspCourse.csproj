@@ -7,6 +7,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190305112107_Initial-create.cs" />
     <Compile Remove="Migrations\20190305112107_Initial-create.Designer.cs" />
+    <Compile Remove="Migrations\20190305112510_Initial-create.cs" />
+    <Compile Remove="Migrations\20190305112510_Initial-create.Designer.cs" />
+    <Compile Remove="Migrations\20190305132455_Update-database.cs" />
+    <Compile Remove="Migrations\20190305132455_Update-database.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
