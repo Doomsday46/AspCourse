@@ -11,6 +11,8 @@ namespace AspCourse.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
+        public ICollection<Tournament> Tournaments { get; set; }
+
         public override bool Equals(object obj)
         {
             var user = obj as User;

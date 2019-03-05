@@ -14,8 +14,8 @@ namespace AspCourse.Controllers
 {
     public class AccountController : Controller
     {
-        private UserContext db;
-        public AccountController(UserContext context)
+        private ApplicationContext db;
+        public AccountController(ApplicationContext context)
         {
             db = context;
         }

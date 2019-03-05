@@ -12,9 +12,9 @@ namespace AspCourse.Controllers
 {
     public class TournamentsController : Controller
     {
-        private readonly UserContext _context;
+        private readonly ApplicationContext _context;
 
-        public TournamentsController(UserContext context)
+        public TournamentsController(ApplicationContext context)
         {
             _context = context;
         }
