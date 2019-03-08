@@ -79,21 +79,21 @@ namespace AspCourse.Controllers
         }
 
         // GET: TournamentPlayers/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        public async Task<IActionResult> Edit(TournamentPlayer tournamentPlayerModel)
         {
-            if (id == null)
+            if (tournamentPlayerModel == null)
             {
                 return NotFound();
             }
 
-            var tournamentPlayer = await _context.TournamentPlayer.FindAsync(id);
-            if (tournamentPlayer == null)
+            if (!_context.TournamentPlayer.Any(a => a.Id.Equals(tournamentPlayerModel.Id)))
             {
                 return NotFound();
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "FirstName", tournamentPlayer.PlayerId);
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Name", tournamentPlayer.TournamentId);
-            return View(tournamentPlayer);
+            ViewData["TournamentPlayerId"] = tournamentPlayerModel.Id;
+            ViewData["PlayerId"] = new SelectList(_context.Players, "Id", "FirstName", tournamentPlayerModel.PlayerId);
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Name", tournamentPlayerModel.TournamentId);
+            return View(tournamentPlayerModel);
         }
 
         // POST: TournamentPlayers/Edit/5
@@ -101,12 +101,16 @@ namespace AspCourse.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("PlayerId,TournamentId")] TournamentPlayer tournamentPlayer)
+        public async Task<IActionResult> Edit([Bind("Id")] long id, [Bind("PlayerId,TournamentId")] TournamentPlayer tournamentPlayer)
         {
-            if (id != tournamentPlayer.PlayerId)
+            if (tournamentPlayer.Id != id)
             {
                 return NotFound();
             }
+
+
+            tournamentPlayer.Player = _context.Players.First(a => a.Id.Equals(tournamentPlayer.PlayerId));
+            tournamentPlayer.Tournament = _context.Tournaments.First(a => a.Id.Equals(tournamentPlayer.TournamentId));
 
             if (ModelState.IsValid)
             {
