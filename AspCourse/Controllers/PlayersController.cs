@@ -31,7 +31,7 @@ namespace AspCourse.Controllers
             {
                 return NotFound();
             }
-
+            
             var player = await _context.Players
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (player == null)

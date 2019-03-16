@@ -12,11 +12,10 @@ namespace AspCourse.Models
         public string SecondName { get; set; }
         public DateTime BirthDay { get; set; }
 
-        public ICollection<TournamentPlayer> TournamentPlayers { get; set; }
+        public Tournament Tournament { get; set; }
 
         public Player()
         {
-            TournamentPlayers = new List<TournamentPlayer>();
         }
 
         public override bool Equals(object obj)

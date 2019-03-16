@@ -11,25 +11,21 @@ namespace AspCourse.Models
         public string Name { get; set; }
         public DateTime DateTime { get; set; }
 
-        public ICollection<TournamentPlayer> TournamentPlayers { get; set; }
-        public ICollection<TournamentLocation> TournamentLocations { get; set; }
-
-        public Tournament()
-        {
-            TournamentPlayers = new List<TournamentPlayer>();
-            TournamentLocations = new List<TournamentLocation>();
-        }
+        public ICollection<Player> Players{ get; set; }
+        public ICollection<Location> Locations { get; set; }
 
         public override bool Equals(object obj)
         {
             var tournament = obj as Tournament;
             return tournament != null &&
-                   Id == tournament.Id;
+                   Id == tournament.Id &&
+                   Name == tournament.Name &&
+                   DateTime == tournament.DateTime;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id);
+            return HashCode.Combine(Id, Name, DateTime);
         }
     }
 }

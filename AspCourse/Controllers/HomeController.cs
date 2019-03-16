@@ -14,12 +14,16 @@ namespace AspCourse.Controllers
         [Authorize]
         public IActionResult Index()
         {
+            string name = HttpContext.User.Identity.Name;
+            ViewData["Message"] = $"Your application description page.: !{name}!";
+
             return View();
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            string name = HttpContext.User.Identity.Name;
+            ViewData["Message"] = $"Your application description page.: !{name}!";
 
             return View();
         }

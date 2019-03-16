@@ -11,11 +11,11 @@ namespace AspCourse.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public ICollection<TournamentLocation> TournamentLocations { get; set; }
+        public Tournament Tournament { get; set; }
 
         public Location()
         {
-            TournamentLocations = new List<TournamentLocation>();
+            
         }
 
         public override bool Equals(object obj)

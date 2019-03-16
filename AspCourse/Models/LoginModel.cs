@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspCourse.ViewModels
+namespace AspCourse.Models
 {
     public class LoginModel
     {
