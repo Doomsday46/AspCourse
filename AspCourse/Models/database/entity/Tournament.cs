@@ -11,6 +11,9 @@ namespace AspCourse.Models
         public string Name { get; set; }
         public DateTime DateTime { get; set; }
 
+        public long? UserId { get; set; }
+        public User User { get; set; }
+
         public ICollection<Player> Players{ get; set; }
         public ICollection<Location> Locations { get; set; }
 

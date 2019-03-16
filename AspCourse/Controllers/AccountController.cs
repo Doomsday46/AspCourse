@@ -1,5 +1,6 @@
 ﻿using AspCourse.Models;
 using AspCourse.Models.database.entity;
+using AspCourse.Models.security;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +37,7 @@ namespace AspCourse.Controllers
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    user = new User { Email = model.Email, Password = model.Password };
+                    user = new User { Email = model.Email, Password = HashingPassword.GetHashPassword(model.Password) };
                     Role userRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
                     if (userRole != null)
                         user.Role = userRole;
@@ -66,7 +67,7 @@ namespace AspCourse.Controllers
             {
                 User user = await _context.Users
                     .Include(u => u.Role)
-                    .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                    .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == HashingPassword.GetHashPassword(model.Password));
                 if (user != null)
                 {
                     await Authenticate(user); 

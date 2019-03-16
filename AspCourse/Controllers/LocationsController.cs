@@ -21,7 +21,7 @@ namespace AspCourse.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Locations.ToListAsync());
+            return View(await _context.Locations.Where(a => a.UserId != null && a.UserId.Equals(GetIdUser())).ToListAsync());
         }
 
         // GET: Locations/Details/5
@@ -33,7 +33,7 @@ namespace AspCourse.Controllers
             }
 
             var location = await _context.Locations
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id && m.UserId.Equals(GetIdUser()));
             if (location == null)
             {
                 return NotFound();
@@ -48,6 +48,10 @@ namespace AspCourse.Controllers
             return View();
         }
 
+        private long GetIdUser() {
+            return _context.Users.First(a => a.Email.Equals(HttpContext.User.Identity.Name)).Id;
+        }
+
         // POST: Locations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -55,6 +59,7 @@ namespace AspCourse.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description")] Location location)
         {
+            location.UserId = GetIdUser();
             if (ModelState.IsValid)
             {
                 _context.Add(location);

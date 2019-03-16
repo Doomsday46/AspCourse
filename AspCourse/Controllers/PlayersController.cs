@@ -21,7 +21,12 @@ namespace AspCourse.Controllers
         // GET: Players
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Players.ToListAsync());
+            return View(await _context.Players.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
+        }
+
+        private long GetIdUser()
+        {
+            return _context.Users.First(a => a.Email.Equals(HttpContext.User.Identity.Name)).Id;
         }
 
         // GET: Players/Details/5
@@ -33,7 +38,7 @@ namespace AspCourse.Controllers
             }
             
             var player = await _context.Players
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id && m.UserId.Equals(GetIdUser()));
             if (player == null)
             {
                 return NotFound();
@@ -55,6 +60,7 @@ namespace AspCourse.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FirstName,SecondName,BirthDay")] Player player)
         {
+            player.UserId = GetIdUser();
             if (ModelState.IsValid)
             {
                 _context.Add(player);

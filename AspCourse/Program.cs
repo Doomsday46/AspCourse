@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspCourse.Models;
 using AspCourse.Models.database;
+using AspCourse.Models.security;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,8 @@ namespace AspCourse
     {
         public static void Main(string[] args)
         {
+            HashingPassword.Init();
+
             var host = CreateWebHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())

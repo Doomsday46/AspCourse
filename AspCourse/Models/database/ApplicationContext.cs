@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspCourse.Models;
 using AspCourse.Models.database.entity;
+using AspCourse.Models.security;
 
 namespace AspCourse.Models
 {
@@ -24,11 +25,20 @@ namespace AspCourse.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Player>()
+                .HasOne(p => p.Tournament)
+                .WithMany(t => t.Players)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Location>()
+                .HasOne(p => p.Tournament)
+                .WithMany(t => t.Locations)
+                .OnDelete(DeleteBehavior.SetNull);
+  
             string adminRoleName = "admin";
             string userRoleName = "user";
 
             string adminEmail = "admin@mail.ru";
-            string adminPassword = "123456";
+            string adminPassword = HashingPassword.GetHashPassword("123456");
 
             Role adminRole = new Role { Id = 1, Name = adminRoleName };
             Role userRole = new Role { Id = 2, Name = userRoleName };

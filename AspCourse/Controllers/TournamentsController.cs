@@ -23,7 +23,12 @@ namespace AspCourse.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tournaments.ToListAsync());
+            return View(await _context.Tournaments.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
+        }
+
+        private long GetIdUser()
+        {
+            return _context.Users.FirstOrDefault(a => a.Email.Equals(HttpContext.User.Identity.Name)).Id;
         }
 
         // GET: Tournaments/Details/5
@@ -36,7 +41,7 @@ namespace AspCourse.Controllers
             }
 
             var tournament = await _context.Tournaments
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id && m.UserId.Equals(GetIdUser()));
             if (tournament == null)
             {
                 return NotFound();
@@ -60,6 +65,7 @@ namespace AspCourse.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Name,DateTime")] Tournament tournament)
         {
+            tournament.UserId = GetIdUser();
             if (ModelState.IsValid)
             {
                 _context.Add(tournament);
