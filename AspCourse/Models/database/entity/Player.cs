@@ -7,14 +7,14 @@ namespace AspCourse.Models
 {
     public class Player
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public DateTime BirthDay { get; set; }
 
         public Tournament Tournament { get; set; }
 
-        public long? UserId { get; set; }
+        public int? UserId { get; set; }
         public User User { get; set; }
 
         public Player()

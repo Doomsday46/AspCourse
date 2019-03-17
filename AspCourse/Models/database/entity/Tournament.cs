@@ -7,11 +7,11 @@ namespace AspCourse.Models
 {
     public class Tournament
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateTime { get; set; }
 
-        public long? UserId { get; set; }
+        public int? UserId { get; set; }
         public User User { get; set; }
 
         public ICollection<Player> Players{ get; set; }

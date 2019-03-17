@@ -23,6 +23,7 @@
                 <input asp-for="DateTime" class="form-control" />
                 <span asp-validation-for="DateTime" class="text-danger"></span>
             </div>
+            <a asp-action="EditPlayer" asp-route-id="@Model.Id">Edit player</a>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

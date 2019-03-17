@@ -25,7 +25,7 @@ namespace AspCourse.Controllers
         }
 
         // GET: Locations/Details/5
-        public async Task<IActionResult> Details(long? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -48,8 +48,16 @@ namespace AspCourse.Controllers
             return View();
         }
 
-        private long GetIdUser() {
-            return _context.Users.First(a => a.Email.Equals(HttpContext.User.Identity.Name)).Id;
+        private int GetIdUser() {
+            try
+            {
+                return _context.Users.First(a => a.Email.Equals(HttpContext.User.Identity.Name)).Id;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            
         }
 
         // POST: Locations/Create
@@ -70,7 +78,7 @@ namespace AspCourse.Controllers
         }
 
         // GET: Locations/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -90,7 +98,7 @@ namespace AspCourse.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Name,Description")] Location location)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Location location)
         {
             if (id != location.Id)
             {
@@ -121,7 +129,7 @@ namespace AspCourse.Controllers
         }
 
         // GET: Locations/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -141,7 +149,7 @@ namespace AspCourse.Controllers
         // POST: Locations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var location = await _context.Locations.FindAsync(id);
             _context.Locations.Remove(location);
@@ -149,7 +157,7 @@ namespace AspCourse.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LocationExists(long id)
+        private bool LocationExists(int id)
         {
             return _context.Locations.Any(e => e.Id == id);
         }

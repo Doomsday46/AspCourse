@@ -24,13 +24,20 @@ namespace AspCourse.Controllers
             return View(await _context.Players.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
         }
 
-        private long GetIdUser()
+        private int GetIdUser()
         {
-            return _context.Users.First(a => a.Email.Equals(HttpContext.User.Identity.Name)).Id;
+            try
+            {
+                return _context.Users.First(a => a.Email.Equals(HttpContext.User.Identity.Name)).Id;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         // GET: Players/Details/5
-        public async Task<IActionResult> Details(long? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -71,7 +78,7 @@ namespace AspCourse.Controllers
         }
 
         // GET: Players/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -91,7 +98,7 @@ namespace AspCourse.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,FirstName,SecondName,BirthDay")] Player player)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,SecondName,BirthDay")] Player player)
         {
             if (id != player.Id)
             {
@@ -122,7 +129,7 @@ namespace AspCourse.Controllers
         }
 
         // GET: Players/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -142,7 +149,7 @@ namespace AspCourse.Controllers
         // POST: Players/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var player = await _context.Players.FindAsync(id);
             _context.Players.Remove(player);
@@ -150,7 +157,7 @@ namespace AspCourse.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PlayerExists(long id)
+        private bool PlayerExists(int id)
         {
             return _context.Players.Any(e => e.Id == id);
         }
