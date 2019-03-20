@@ -1,4 +1,4 @@
-﻿@model AspCourse.Models.Tournament
+﻿@model IEnumerable<AspCourse.Models.Player>
 
 @{
     ViewData["Title"] = "Edit";
@@ -8,32 +8,59 @@
 
 <h4>Tournament players</h4>
 <hr />
-<tbody>
-    @foreach (var item in Model.Players)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecondName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDay)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
-    </tr>
-    }
-</tbody>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First name</th>
+                <th scope="col">Second name</th>
+                <th scope="col">Birth day</th>
+                <th scope="col">Subscribe</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in Model)
+            {
+                var styleRow = (player.Tournament == null) ? "success" : "danger";
+                <tr class="@styleRow">
+                    <td>
+                        @Html.DisplayFor(modelItem => player.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => player.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => player.SecondName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => player.BirthDay)
+                    </td>
+                    <td>
+                        @if (player.Tournament != null)
+                        {
+                            <button type="submit" class="btn btn-success" asp-controller="Tournaments"
+                                    asp-action="UnSubscribeTournament" asp-route-id="@ViewBag.Tournament.Id"
+                                    asp-route-idPlayer="@player.Id">
+                                Unsubscribe
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-danger" asp-controller="Tournaments"
+                                    asp-action="SubscribeTournament" asp-route-id="@ViewBag.Tournament.Id"
+                                    asp-route-idPlayer="@player.Id">
+                                Subscribe
+                            </button>
+                        }
 
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</form>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

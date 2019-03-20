@@ -19,10 +19,17 @@ namespace AspCourse.Controllers
             _context = context;
         }
 
+        private void initDataView()
+        {
+            string name = HttpContext.User.Identity.Name;
+            ViewData["Account"] = $"{name}!";
+        }
+
         // GET: Tournaments
         [Authorize]
         public async Task<IActionResult> Index()
         {
+            initDataView();
             return View(await _context.Tournaments.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
         }
 
@@ -30,6 +37,7 @@ namespace AspCourse.Controllers
         {
             try
             {
+                initDataView();
                 return _context.Users.First(a => a.Email.Equals(HttpContext.User.Identity.Name)).Id;
             }
             catch (Exception)
@@ -42,6 +50,7 @@ namespace AspCourse.Controllers
         [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
+            initDataView();
             if (id == null)
             {
                 return NotFound();
@@ -61,6 +70,7 @@ namespace AspCourse.Controllers
         [Authorize]
         public IActionResult Create()
         {
+            initDataView();
             return View();
         }
 
@@ -72,6 +82,7 @@ namespace AspCourse.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Name,DateTime")] Tournament tournament)
         {
+            initDataView();
             tournament.UserId = GetIdUser();
             if (ModelState.IsValid)
             {
@@ -86,6 +97,7 @@ namespace AspCourse.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
+            initDataView();
             if (id == null)
             {
                 return NotFound();
@@ -107,6 +119,7 @@ namespace AspCourse.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateTime")] Tournament tournament)
         {
+            initDataView();
             if (id != tournament.Id)
             {
                 return NotFound();
@@ -137,56 +150,166 @@ namespace AspCourse.Controllers
 
 
         [Authorize]
-        public async Task<IActionResult> EditPlayer()
+        public async Task<IActionResult> EditPlayer(int id)
         {
             try
             {
-                return View(await _context.Tournaments.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
+                initDataView();
+                ViewBag.Tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+                return View(await _context.Players.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
             }
             catch (Exception)
             {
-
-                return View(new List<Tournament>());
+                return View();
             }
             
+        }
+
+        [Authorize]
+        public async Task<IActionResult> EditLocation(int id)
+        {
+            try
+            {
+                initDataView();
+                ViewBag.Tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+                return View(await _context.Locations.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
+            }
+            catch (Exception)
+            {
+                return View();
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> EditPlayer(int id, [Bind("Id,Name,DateTime")] Tournament tournament)
-        {
-            if (id != tournament.Id)
+        public async Task<IActionResult> SubscribeTournament(int id, int idPlayer) {
+
+            try
             {
-                return NotFound();
+                initDataView();
+                Player player = _context.Players.First(a => a.Id.Equals(idPlayer));
+
+                Tournament tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+
+                player.Tournament = tournament;
+                player.TournamentId = tournament.Id;
+
+                tournament.Players.Add(player);
+
+                _context.Update(player);
+                _context.Update(tournament);
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+            }
+            ViewBag.Tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+            return View("EditPlayer", await _context.Players.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> UnSubscribeTournament(int id, int idPlayer)
+        {
+
+            try
+            {
+                initDataView();
+                Player player = _context.Players.First(a => a.Id.Equals(idPlayer));
+
+                Tournament tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+
+                tournament.Players.Remove(player);
+
+                player.Tournament = null;
+                player.TournamentId = null;
+
+                _context.Update(player);
+                _context.Update(tournament);
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(tournament);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TournamentExists(tournament.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(tournament);
+            ViewBag.Tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+            return View("EditPlayer", await _context.Players.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> SubscribeLocationToTournament(int id, int idLocation)
+        {
+
+            try
+            {
+                initDataView();
+                Location location = _context.Locations.First(a => a.Id.Equals(idLocation));
+
+                Tournament tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+
+                location.Tournament = tournament;
+                location.TournamentId = tournament.Id;
+
+                tournament.Locations.Add(location);
+
+                _context.Update(location);
+                _context.Update(tournament);
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+            }
+            ViewBag.Tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+            return View("EditLocation", await _context.Locations.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> UnSubscribeLocationToTournament(int id, int idLocation)
+        {
+
+            try
+            {
+                initDataView();
+                Location location = _context.Locations.First(a => a.Id.Equals(idLocation));
+
+                Tournament tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+
+                tournament.Locations.Remove(location);
+
+                location.Tournament = null;
+                location.TournamentId = null;
+
+                _context.Update(location);
+                _context.Update(tournament);
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+            }
+
+            ViewBag.Tournament = _context.Tournaments.First(a => a.Id.Equals(id));
+            return View("EditLocation", await _context.Locations.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser())).ToListAsync());
+        }
+
         // GET: Tournaments/Delete/5
         [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
+            initDataView();
             if (id == null)
             {
                 return NotFound();
@@ -208,6 +331,7 @@ namespace AspCourse.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            initDataView();
             var tournament = await _context.Tournaments.FindAsync(id);
             _context.Tournaments.Remove(tournament);
             await _context.SaveChangesAsync();
@@ -217,6 +341,36 @@ namespace AspCourse.Controllers
         private bool TournamentExists(int id)
         {
             return _context.Tournaments.Any(e => e.Id == id);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ShowLocation(int id)
+        {
+            try
+            {
+                initDataView();
+                return View(await _context.Locations.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser()) && m.TournamentId.Equals(id)).ToListAsync());
+            }
+            catch (Exception)
+            {
+                return View(new List<Player>());
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ShowPlayer(int id)
+        {
+            try
+            {
+                initDataView();
+                return View(await _context.Players.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser()) && m.TournamentId.Equals(id)).ToListAsync());
+            }
+            catch (Exception)
+            {
+                return View(new List<Location>());
+            }
         }
     }
 }

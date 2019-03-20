@@ -18,6 +18,7 @@ namespace AspCourse
     {
         public static void Main(string[] args)
         {
+
             HashingPassword.Init();
 
             var host = CreateWebHostBuilder(args).Build();

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspCourse.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspCourse.Controllers
 {
@@ -18,15 +19,25 @@ namespace AspCourse.Controllers
             _context = context;
         }
 
+        private void initDataView()
+        {
+            string name = HttpContext.User.Identity.Name;
+            ViewData["Account"] = $"{name}!";
+        }
+
         // GET: Locations
+        [Authorize]
         public async Task<IActionResult> Index()
         {
+            initDataView();
             return View(await _context.Locations.Where(a => a.UserId != null && a.UserId.Equals(GetIdUser())).ToListAsync());
         }
 
         // GET: Locations/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
+            initDataView();
             if (id == null)
             {
                 return NotFound();
@@ -43,8 +54,10 @@ namespace AspCourse.Controllers
         }
 
         // GET: Locations/Create
+        [Authorize]
         public IActionResult Create()
         {
+            initDataView();
             return View();
         }
 
@@ -65,8 +78,10 @@ namespace AspCourse.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Name,Description")] Location location)
         {
+            initDataView();
             location.UserId = GetIdUser();
             if (ModelState.IsValid)
             {
@@ -78,8 +93,10 @@ namespace AspCourse.Controllers
         }
 
         // GET: Locations/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
+            initDataView();
             if (id == null)
             {
                 return NotFound();
@@ -98,8 +115,10 @@ namespace AspCourse.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Location location)
         {
+            initDataView();
             if (id != location.Id)
             {
                 return NotFound();
@@ -129,8 +148,10 @@ namespace AspCourse.Controllers
         }
 
         // GET: Locations/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
+            initDataView();
             if (id == null)
             {
                 return NotFound();
@@ -149,8 +170,10 @@ namespace AspCourse.Controllers
         // POST: Locations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            initDataView();
             var location = await _context.Locations.FindAsync(id);
             _context.Locations.Remove(location);
             await _context.SaveChangesAsync();

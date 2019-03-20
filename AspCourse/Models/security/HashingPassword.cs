@@ -6,7 +6,7 @@ namespace AspCourse.Models.security
 {
     public static class HashingPassword
     {
-        private static byte[] salt;
+        private static byte[] salt = new byte[128/8];
 
         public static void Init()
         {

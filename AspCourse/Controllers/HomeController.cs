@@ -11,43 +11,51 @@ namespace AspCourse.Controllers
 {
     public class HomeController : Controller
     {
+
         [Authorize]
         public IActionResult Index()
         {
             string name = HttpContext.User.Identity.Name;
-            ViewData["Message"] = $"Your application description page.: !{name}!";
+            ViewData["Account"] = $"{name}!";
 
             return View();
         }
-
+        [Authorize]
         public IActionResult About()
         {
             string name = HttpContext.User.Identity.Name;
-            ViewData["Message"] = $"Your application description page.: !{name}!";
+            ViewData["Account"] = $"{name}!";
 
             return View();
         }
-
+        [Authorize]
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            string name = HttpContext.User.Identity.Name;
+            ViewData["Account"] = $"{name}!";
 
             return View();
         }
-
+        [Authorize]
         public IActionResult Privacy()
         {
+            string name = HttpContext.User.Identity.Name;
+            ViewData["Account"] = $"{name}!";
             return View();
         }
-
+        [Authorize]
         public IActionResult Tournament()
         {
+            string name = HttpContext.User.Identity.Name;
+            ViewData["Account"] = $"{name}!";
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            string name = HttpContext.User.Identity.Name;
+            ViewData["Account"] = $"{name}!";
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

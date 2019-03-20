@@ -35,6 +35,17 @@
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
+            <td>
+                <form method="get">
+                    <button type="submit" class="btn btn-info" asp-action="ShowPlayer" asp-route-id="@item.Id">
+                        Players
+                    </button>
+
+                    <button type="submit" class="btn btn-info" asp-action="ShowLocation" asp-route-id="@item.Id">
+                        Locations
+                    </button>
+                </form>
+            </td>
         </tr>
 }
     </tbody>

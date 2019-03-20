@@ -11,6 +11,7 @@ namespace AspCourse.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public int? TournamentId { get; set; }
         public Tournament Tournament { get; set; }
 
         public int? UserId { get; set; }

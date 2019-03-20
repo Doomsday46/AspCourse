@@ -12,6 +12,7 @@ namespace AspCourse.Models
         public string SecondName { get; set; }
         public DateTime BirthDay { get; set; }
 
+        public int? TournamentId { get; set; }
         public Tournament Tournament { get; set; }
 
         public int? UserId { get; set; }

@@ -21,6 +21,9 @@ namespace AspCourse.Controllers
         {
             _context = context;
         }
+
+        
+
         [HttpGet]
         public IActionResult Register()
         {
@@ -59,6 +62,14 @@ namespace AspCourse.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync();
+            return View("Login");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)

@@ -17,6 +17,12 @@ namespace AspCourse.Models
         public ICollection<Player> Players{ get; set; }
         public ICollection<Location> Locations { get; set; }
 
+        public Tournament()
+        {
+            Players = new List<Player>();
+            Locations = new List<Location>();
+        }
+
         public override bool Equals(object obj)
         {
             var tournament = obj as Tournament;

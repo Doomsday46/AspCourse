@@ -1,0 +1,62 @@
+﻿@model IEnumerable<AspCourse.Models.Location>
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit player</h2>
+
+<h4>Tournament locations</h4>
+<hr />
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Subscribe</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var location in Model)
+            {
+                var styleRow = (location.Tournament == null) ? "success" : "danger";
+                <tr class="@styleRow">
+                    <td>
+                        @Html.DisplayFor(modelItem => location.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => location.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => location.Description)
+                    </td>
+                    <td>
+                        @if (location.Tournament != null)
+                        {
+                            <button type="submit" class="btn btn-success" asp-controller="Tournaments"
+                                    asp-action="UnSubscribeLocationToTournament" asp-route-id="@ViewBag.Tournament.Id"
+                                    asp-route-idLocation="@location.Id">
+                                Unsubscribe
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-danger" asp-controller="Tournaments"
+                                    asp-action="SubscribeLocationToTournament" asp-route-id="@ViewBag.Tournament.Id"
+                                    asp-route-idLocation="@location.Id">
+                                Subscribe
+                            </button>
+                        }
+
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</form>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
