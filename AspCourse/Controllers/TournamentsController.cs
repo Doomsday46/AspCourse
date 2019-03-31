@@ -354,7 +354,7 @@ namespace AspCourse.Controllers
             }
             catch (Exception)
             {
-                return View(new List<Player>());
+                return View(new List<Location>());
             }
         }
 
@@ -365,12 +365,39 @@ namespace AspCourse.Controllers
             try
             {
                 initDataView();
+                var teams = _context.Teams.Where(a => a.TournamentId.Equals(id) && a.UserId != null && a.UserId.Equals(GetIdUser()));
+                SelectList selectLists = new SelectList(teams, "Id", "Name");
+                ViewBag.Teams = selectLists;
+                ViewData["tournamentId"] = id;
                 return View(await _context.Players.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser()) && m.TournamentId.Equals(id)).ToListAsync());
             }
             catch (Exception)
             {
-                return View(new List<Location>());
+                return View(new List<Player>());
             }
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> SetTeam(int playerId, int teamId, int tournamentId)
+        {           
+            initDataView();
+            var team = _context.Teams.FirstOrDefault(a => a.Id.Equals(teamId) && a.UserId.Equals(GetIdUser()));
+            var player = _context.Players.FirstOrDefault(a => a.Id.Equals(playerId) && a.UserId.Equals(GetIdUser()));
+
+            player.TeamId = teamId;
+            player.Team = team;
+            team.Players.Add(player);
+
+            _context.Update(player);
+            await _context.SaveChangesAsync();
+
+            var teams = _context.Teams.Where(a => a.TournamentId.Equals(tournamentId) && a.UserId != null && a.UserId.Equals(GetIdUser()));
+            SelectList selectLists = new SelectList(teams, "Id", "Name");
+            ViewBag.Teams = selectLists;
+            ViewData["tournamentId"] = tournamentId;
+
+            return View("ShowPlayer",await _context.Players.Include(t => t.Team).Where(m => m.UserId != null && m.UserId.Equals(GetIdUser()) && m.TournamentId.Equals(tournamentId)).ToListAsync());  
         }
     }
 }

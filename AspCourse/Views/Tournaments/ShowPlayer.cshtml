@@ -19,8 +19,9 @@
                 @Html.DisplayNameFor(model => model.BirthDay)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.Team)
             </th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
@@ -37,10 +38,18 @@
                 @Html.DisplayFor(modelItem => item.BirthDay)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.Team.Name)
+            </td>
+            <td>
+                @using (Html.BeginForm("SetTeam", "Tournaments"))
+                {
+                    @Html.Hidden("playerId", item.Id)
+                    @Html.Hidden("tournamentId", ViewData["tournamentId"])
+                    @Html.DropDownList("teamId", (IEnumerable<SelectListItem>)ViewBag.Teams as SelectList, new { onchange = "this.form.submit()" })
+                }
             </td>
         </tr>
-}
+                    }
     </tbody>
 </table>
 

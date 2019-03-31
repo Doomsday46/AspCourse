@@ -35,13 +35,14 @@
                     <li><a asp-area="" asp-controller="Tournaments" asp-action="Index">Tournament</a></li>
                     <li><a asp-area="" asp-controller="Locations" asp-action="Index">Locations</a></li>
                     <li><a asp-area="" asp-controller="Players" asp-action="Index">Players</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                    <li><a asp-area="" asp-controller="Teams" asp-action="Index">Teams</a></li>
                     @{
                         if (@ViewData["Account"] != null && @ViewData["Account"].Equals("admin@mail.ru!"))
                         {
                             <li><a asp-area="" asp-controller="Users" asp-action="Index"> Users </a></li>
                         };
                     }
+                    <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
                     <li><p class="navbar-text navbar-right">Signed in as @ViewData["Account"]</p></li>
                 </ul>
             </div>          

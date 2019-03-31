@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspCourse.Models.database.entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace AspCourse.Models
 
         public int? TournamentId { get; set; }
         public Tournament Tournament { get; set; }
+
+        public int? TeamId { get; set; }
+        public Team Team { get; set; }
 
         public int? UserId { get; set; }
         public User User { get; set; }

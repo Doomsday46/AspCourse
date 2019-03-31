@@ -16,7 +16,8 @@ namespace AspCourse.Models
         public DbSet<Player> Players { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Role> Roles { get; set; }
-
+        public DbSet<Team> Teams { get; set; }
+        
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspCourse.Models.database.entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace AspCourse.Models
 
         public ICollection<Player> Players{ get; set; }
         public ICollection<Location> Locations { get; set; }
+        public ICollection<Team> Teams { get; set; }
 
         public Tournament()
         {
