@@ -73,7 +73,7 @@ using AspCourse.Models;
             WriteLiteral("\r\n<h2>Edit player</h2>\r\n\r\n<h4>Tournament players</h4>\r\n<hr />\r\n");
             EndContext();
             BeginContext(150, 2114, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57232039027a4facb370b88f29ee9592", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e6e699ff0907446e95c83c8773e473dc", async() => {
                 BeginContext(170, 354, true);
                 WriteLiteral(@"
     <table class=""table"">
@@ -159,7 +159,7 @@ WriteAttributeValue("", 694, styleRow, 694, 9, false);
                 WriteLiteral("                            ");
                 EndContext();
                 BeginContext(1342, 338, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f5a1c5c919b848809a23b9304a6b1650", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0328b2e76aee4b87a9aa7d63b46f9047", async() => {
                     BeginContext(1596, 75, true);
                     WriteLiteral("\r\n                                Unsubscribe\r\n                            ");
                     EndContext();
@@ -217,7 +217,7 @@ WriteAttributeValue("", 694, styleRow, 694, 9, false);
                 WriteLiteral("                            ");
                 EndContext();
                 BeginContext(1794, 333, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "910408da6ee342c595692b5c6d0b4a62", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a143f8ac196145b383364f06a978bb31", async() => {
                     BeginContext(2045, 73, true);
                     WriteLiteral("\r\n                                Subscribe\r\n                            ");
                     EndContext();
@@ -301,7 +301,7 @@ WriteAttributeValue("", 694, styleRow, 694, 9, false);
             WriteLiteral("\r\n<div>\r\n    ");
             EndContext();
             BeginContext(2277, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "075038d9886748d78fe74d18e74fb0a5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "14e61bce195f40f3ab7ff9b26e8a6d8d", async() => {
                 BeginContext(2299, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

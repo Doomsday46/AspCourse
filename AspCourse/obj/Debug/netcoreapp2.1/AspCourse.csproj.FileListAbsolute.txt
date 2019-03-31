@@ -95,9 +95,12 @@ C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Users\Delete.g
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Users\Details.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Users\Edit.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Users\Index.g.cshtml.cs
-C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Teams\Create.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Teams\Delete.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Teams\Details.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Teams\Edit.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Teams\Index.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Teams\ShowPlayer.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\PrizePlaces\Details.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\PrizePlaces\Edit.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\PrizePlaces\Index.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Teams\Create.g.cshtml.cs

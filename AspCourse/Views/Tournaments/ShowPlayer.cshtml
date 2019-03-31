@@ -45,7 +45,7 @@
                 {
                     @Html.Hidden("playerId", item.Id)
                     @Html.Hidden("tournamentId", ViewData["tournamentId"])
-                    @Html.DropDownList("teamId", (IEnumerable<SelectListItem>)ViewBag.Teams as SelectList, new { onchange = "this.form.submit()" })
+                    @Html.DropDownList("teamId", ViewBag.Teams as SelectList, new { onchange = "this.form.submit()" })
                 }
             </td>
         </tr>

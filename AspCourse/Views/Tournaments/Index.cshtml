@@ -44,6 +44,10 @@
                     <button type="submit" class="btn btn-info" asp-action="ShowLocation" asp-route-id="@item.Id">
                         Locations
                     </button>
+                     
+                    <button type="submit" class="btn btn-info" asp-controller="PrizePlaces" asp-action="Index" asp-route-id="@item.Id">
+                        Prize place
+                    </button>
                 </form>
             </td>
         </tr>

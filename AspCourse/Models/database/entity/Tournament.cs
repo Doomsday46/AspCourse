@@ -15,14 +15,17 @@ namespace AspCourse.Models
         public int? UserId { get; set; }
         public User User { get; set; }
 
-        public ICollection<Player> Players{ get; set; }
+        public ICollection<Player> Players { get; set; }
         public ICollection<Location> Locations { get; set; }
         public ICollection<Team> Teams { get; set; }
+        public ICollection<PrizePlace> PrizePlaces { get; set; }
 
         public Tournament()
         {
             Players = new List<Player>();
             Locations = new List<Location>();
+            Teams = new List<Team>();
+            PrizePlaces = new List<PrizePlace>();
         }
 
         public override bool Equals(object obj)
