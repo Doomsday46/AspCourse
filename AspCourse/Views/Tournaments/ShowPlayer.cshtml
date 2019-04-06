@@ -41,11 +41,11 @@
                 @Html.DisplayFor(modelItem => item.Team.Name)
             </td>
             <td>
-                @using (Html.BeginForm("SetTeam", "Tournaments"))
+                @using (Html.BeginForm("SetTeam", "Tournaments", FormMethod.Post, new { id = "idForm" + item.Id}))
                 {
                     @Html.Hidden("playerId", item.Id)
                     @Html.Hidden("tournamentId", ViewData["tournamentId"])
-                    @Html.DropDownList("teamId", ViewBag.Teams as SelectList, new { onchange = "this.form.submit()" })
+                    @Html.DropDownList("teamId", ViewBag.Teams as SelectList, new { onchange = "this.form.submit()", id="id"+item.Id, name="name" + item.Id })
                 }
             </td>
         </tr>

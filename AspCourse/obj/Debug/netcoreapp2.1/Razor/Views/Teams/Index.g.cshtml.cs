@@ -73,7 +73,7 @@ using AspCourse.Models;
             WriteLiteral("\r\n<h2>Index</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(131, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3a218a05f62e474cb27b93025fa7fec2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3e007d2c3d604bc4b3ab8757e78c8844", async() => {
                 BeginContext(154, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -143,7 +143,7 @@ using AspCourse.Models;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(791, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22fda646b4f94f24ba9da8ddd1d3a406", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b98104478ed746f7b83a4129dfc388c3", async() => {
                 BeginContext(836, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -178,7 +178,7 @@ using AspCourse.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(864, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d8281ec67c0643f683001de0e1b5685d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b1631cfeac4410286ffc2ff8c8e1080", async() => {
                 BeginContext(912, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -213,7 +213,7 @@ using AspCourse.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(943, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "244c0a0c09c946328f97ee28facd44c2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d83baafd38484411920faf4aabba7d2e", async() => {
                 BeginContext(990, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
@@ -248,12 +248,12 @@ using AspCourse.Models;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(1055, 221, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba579b86882a42e1a106f18dc45769c1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae5d8e10809446d2bcfff33f06d7d676", async() => {
                 BeginContext(1074, 22, true);
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(1096, 155, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e9190b5e132645aea65d5055e09373c1", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0f42b98310940b78483de119b73ff52", async() => {
                     BeginContext(1187, 55, true);
                     WriteLiteral("\r\n                        Players\r\n                    ");
                     EndContext();
