@@ -369,7 +369,7 @@ namespace AspCourse.Controllers
                 SelectList selectLists = new SelectList(teams, "Id", "Name");
                 ViewBag.Teams = selectLists;
                 ViewData["tournamentId"] = id;
-                return View(await _context.Players.Where(m => m.UserId != null && m.UserId.Equals(GetIdUser()) && m.TournamentId.Equals(id)).ToListAsync());
+                return View(await _context.Players.Include(t => t.Team).Where(m => m.UserId != null && m.UserId.Equals(GetIdUser()) && m.TournamentId.Equals(id)).ToListAsync());
             }
             catch (Exception)
             {
@@ -397,7 +397,7 @@ namespace AspCourse.Controllers
             ViewBag.Teams = selectLists;
             ViewData["tournamentId"] = tournamentId;
 
-            return View("ShowPlayer",await _context.Players.Include(t => t.Team).Where(m => m.UserId != null && m.UserId.Equals(GetIdUser()) && m.TournamentId.Equals(tournamentId)).ToListAsync());  
+            return View("ShowPlayer", await _context.Players.Include(t => t.Team).Where(m => m.UserId != null && m.UserId.Equals(GetIdUser()) && m.TournamentId.Equals(tournamentId)).ToListAsync());  
         }
     }
 }

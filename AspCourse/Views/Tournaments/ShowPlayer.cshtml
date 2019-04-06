@@ -41,9 +41,9 @@
                 @Html.DisplayFor(modelItem => item.Team.Name)
             </td>
             <td>
-                @using (Html.BeginForm("SetTeam", "Tournaments", FormMethod.Post, new { id = "idForm" + item.Id}))
+                @using (Html.BeginForm("SetTeam", "Tournaments", FormMethod.Post, new { id = "idForm" + item.Id, name = "nameForm" + item.Id }))
                 {
-                    @Html.Hidden("playerId", item.Id)
+                    <input type="hidden" value="@item.Id" name="playerId" />
                     @Html.Hidden("tournamentId", ViewData["tournamentId"])
                     @Html.DropDownList("teamId", ViewBag.Teams as SelectList, new { onchange = "this.form.submit()", id="id"+item.Id, name="name" + item.Id })
                 }

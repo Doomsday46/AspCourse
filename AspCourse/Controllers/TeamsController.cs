@@ -75,7 +75,7 @@ namespace AspCourse.Controllers
         public IActionResult Create()
         {
             initDataView();
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Id");
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments.Where(a => a.UserId.Equals(GetIdUser())), "Id", "Name");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
@@ -95,7 +95,7 @@ namespace AspCourse.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Id", team.TournamentId);
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments.Where(a => a.UserId.Equals(GetIdUser())), "Id", "Name", team.TournamentId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", team.UserId);
             return View(team);
         }
@@ -115,7 +115,7 @@ namespace AspCourse.Controllers
             {
                 return NotFound();
             }
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Id", team.TournamentId);
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments.Where(a => a.UserId.Equals(GetIdUser())), "Id", "Name", team.TournamentId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", team.UserId);
             return View(team);
         }
@@ -154,7 +154,7 @@ namespace AspCourse.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Id", team.TournamentId);
+            ViewData["TournamentId"] = new SelectList(_context.Tournaments.Where(a => a.UserId.Equals(GetIdUser())), "Id", "Name", team.TournamentId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", team.UserId);
             return View(team);
         }
