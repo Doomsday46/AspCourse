@@ -109,7 +109,7 @@ namespace AspCourse.Controllers
             {
                 return NotFound();
             }
-            ViewData["TeamId"] = new SelectList(_context.Teams, "Id", "Name", prizePlace.TeamId);
+            ViewData["TeamId"] = new SelectList(_context.Teams.Where(a => a.UserId.Equals(GetIdUser())), "Id", "Name", prizePlace.TeamId);
             ViewBag.TournamentId = prizePlace.TournamentId;
             return View(prizePlace);
         }
@@ -131,7 +131,7 @@ namespace AspCourse.Controllers
             {
                 try
                 {
-                    var updatePrizePlace = _context.PrizePlaces.FirstOrDefault(a => a.Id.Equals(id));
+                    var updatePrizePlace = _context.PrizePlaces.FirstOrDefault(a => a.Id.Equals(id) && a.UserId.Equals(GetIdUser()));
                     updatePrizePlace.TeamId = prizePlace.TeamId;
                     _context.Update(updatePrizePlace);
                     await _context.SaveChangesAsync();
@@ -147,7 +147,7 @@ namespace AspCourse.Controllers
                         throw;
                     }
                 }
-                var _prizePlace = _context.PrizePlaces.Include(t => t.Tournament).FirstOrDefault(a => a.Id.Equals(prizePlace.Id));
+                var _prizePlace = _context.PrizePlaces.Include(t => t.Tournament).FirstOrDefault(a => a.Id.Equals(prizePlace.Id) && a.UserId.Equals(GetIdUser()));
                 return RedirectToAction(nameof(Index),new { id = _prizePlace.TournamentId });
             }
             ViewData["TeamId"] = new SelectList(_context.Teams, "Id", "Id", prizePlace.TeamId);
@@ -168,7 +168,7 @@ namespace AspCourse.Controllers
                 .Include(p => p.Team)
                 .Include(p => p.Tournament)
                 .Include(p => p.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id && m.UserId.Equals(GetIdUser()));
             if (prizePlace == null)
             {
                 return NotFound();
