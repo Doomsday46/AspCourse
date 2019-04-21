@@ -1,0 +1,16 @@
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\AspCourse.Views.dll
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\AspCourse.Views.pdb
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.dll
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.pdb
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\nunit.engine.netstandard.dll
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\AspcourseTests.deps.json
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\AspcourseTests.runtimeconfig.json
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\AspcourseTests.runtimeconfig.dev.json
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\AspcourseTests.dll
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\AspCourse.dll
+C:\GitHub\AspCourse\AspcourseTests\bin\Debug\netcoreapp2.2\AspCourse.pdb
+C:\GitHub\AspCourse\AspcourseTests\obj\Debug\netcoreapp2.2\AspcourseTests.csprojAssemblyReference.cache
+C:\GitHub\AspCourse\AspcourseTests\obj\Debug\netcoreapp2.2\AspcourseTests.csproj.CoreCompileInputs.cache
+C:\GitHub\AspCourse\AspcourseTests\obj\Debug\netcoreapp2.2\AspcourseTests.AssemblyInfoInputs.cache
+C:\GitHub\AspCourse\AspcourseTests\obj\Debug\netcoreapp2.2\AspcourseTests.AssemblyInfo.cs
+C:\GitHub\AspCourse\AspcourseTests\obj\Debug\netcoreapp2.2\AspcourseTests.csproj.CopyComplete
