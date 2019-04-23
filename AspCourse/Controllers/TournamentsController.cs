@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspCourse.Models;
 using Microsoft.AspNetCore.Authorization;
+using AspCourse.Models.checkModel;
 
 namespace AspCourse.Controllers
 {
@@ -62,6 +63,8 @@ namespace AspCourse.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.IsValid = new CheckModel(tournament, tournament.Players, tournament.Locations, tournament.Teams, tournament.PrizePlaces).IsValid();
 
             return View(tournament);
         }

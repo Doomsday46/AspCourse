@@ -86,7 +86,6 @@ C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Players\Detail
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Players\Edit.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Players\Index.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Tournaments\EditPlayer.g.cshtml.cs
-C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\AspCourse.csprojAssemblyReference.cache
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Tournaments\EditLocation.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Tournaments\ShowPlayer.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Tournaments\ShowLocation.g.cshtml.cs
@@ -104,3 +103,4 @@ C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\PrizePlaces\De
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\PrizePlaces\Edit.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\PrizePlaces\Index.g.cshtml.cs
 C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\Razor\Views\Teams\Create.g.cshtml.cs
+C:\GitHub\AspCourse\AspCourse\obj\Debug\netcoreapp2.1\AspCourse.csprojAssemblyReference.cache
